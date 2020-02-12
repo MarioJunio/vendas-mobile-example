@@ -1,23 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:elevation="4dp"
+                                    android:orientation="horizontal">
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="#1" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:layout_margin="10dp"
+                      android:orientation="horizontal">
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="#1" />
+            <TextView
+                    android:id="@+id/venda_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="#1"
+                    android:textAlignment="center"/>
+
+            <TextView
+                    android:id="@+id/venda_description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:text="Descricao da venda"
+                    android:textAlignment="textStart"/>
+
+        </LinearLayout>
+
+        <TableLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                     android:stretchColumns="0,1">
+
+            <TableRow android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:layout_margin="5dp">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                              android:layout_gravity="center" android:orientation="horizontal">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="Acrescimo(s):"
+                              android:textAlignment="center"/>
+                    <TextView android:id="@+id/venda_addition" android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_marginLeft="5dp"
+                              android:text="R$ 10,00"
+                              android:textAlignment="center"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                              android:layout_gravity="center" android:orientation="horizontal">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="Desconto(s):"/>
+                    <TextView android:id="@+id/venda_discount" android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_marginLeft="5dp"
+                              android:text="R$ 10,00"/>
+                </LinearLayout>
+
+            </TableRow>
+
+            <TableRow android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:layout_margin="5dp">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                              android:layout_gravity="center" android:orientation="horizontal">
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="Total:"/>
+                    <TextView android:id="@+id/venda_total" android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_marginLeft="5dp"
+                              android:text="R$ 100,00"/>
+
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                              android:layout_gravity="center" android:orientation="horizontal">
+                    <TextView android:id="@+id/venda_date" android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="16/04/2020"/>
+                </LinearLayout>
+
+            </TableRow>
+
+        </TableLayout>
 
     </LinearLayout>
 

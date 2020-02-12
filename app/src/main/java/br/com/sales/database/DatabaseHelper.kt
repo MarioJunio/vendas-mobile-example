@@ -27,5 +27,6 @@ val CREATE_TABLE_VENDA = """
         ${Venda.TOTAL_COLUMN} NUMERIC(10,2) NOT NULL,
         ${Venda.ACRESCIMO_COLUMN} NUMERIC(10,2),
         ${Venda.DESCONTO_COLUMN} NUMERIC(10,2),
-        ${Venda.DATA_COLUMN} TEXT)
+        ${Venda.DATA_COLUMN} TEXT,
+        ${Venda.SYNC_COLUMN} INTEGER)
 """.trimIndent()

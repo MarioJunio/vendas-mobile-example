@@ -15,8 +15,7 @@ class VendaProvider : ContentProvider() {
 
     companion object {
         val PROVIDER_NAME: String = "br.com.sales.VendaProvider"
-        val URL: String = "content://${PROVIDER_NAME}/${Venda.TABLE_NAME}"
-        val CONTENT_URI: Uri = Uri.parse(URL)
+        val CONTENT_URI: Uri = Uri.parse("content://$PROVIDER_NAME").buildUpon().appendPath(Venda.TABLE_NAME).build()
 
         val ALL = 1
         val READ_BY_ID = 2
