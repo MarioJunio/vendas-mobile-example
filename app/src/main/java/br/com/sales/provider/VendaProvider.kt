@@ -14,8 +14,9 @@ import br.com.sales.model.Venda
 class VendaProvider : ContentProvider() {
 
     companion object {
+        val PATH = Venda.TABLE_NAME
         val PROVIDER_NAME: String = "br.com.sales.VendaProvider"
-        val CONTENT_URI: Uri = Uri.parse("content://$PROVIDER_NAME").buildUpon().appendPath(Venda.TABLE_NAME).build()
+        val CONTENT_URI: Uri = Uri.parse("content://$PROVIDER_NAME").buildUpon().appendPath(PATH).build()
 
         val ALL = 1
         val READ_BY_ID = 2
@@ -26,8 +27,8 @@ class VendaProvider : ContentProvider() {
     lateinit var database: SQLiteDatabase
 
     init {
-        uriMatcher.addURI(PROVIDER_NAME, "sales", ALL)
-        uriMatcher.addURI(PROVIDER_NAME, "sales/#", READ_BY_ID)
+        uriMatcher.addURI(PROVIDER_NAME, PATH, ALL)
+        uriMatcher.addURI(PROVIDER_NAME, "$PATH/#", READ_BY_ID)
     }
 
     override fun onCreate(): Boolean {
@@ -38,8 +39,8 @@ class VendaProvider : ContentProvider() {
     override fun getType(uri: Uri): String? {
 
         return when (uriMatcher.match(uri)) {
-            ALL -> "vnd.android.cursor.dir/${Venda.TABLE_NAME}"
-            READ_BY_ID -> "vnd.android.cursor.item/${Venda.TABLE_NAME}"
+            ALL -> "vnd.android.cursor.dir/$PATH"
+            READ_BY_ID -> "vnd.android.cursor.item/$PATH"
             else -> throw IllegalArgumentException("URI nao existe $uri")
         }
 
@@ -65,7 +66,7 @@ class VendaProvider : ContentProvider() {
             )
 
             READ_BY_ID -> {
-                val selection = "${Venda.TABLE_NAME} = ?"
+                val selection = "${Venda.ID_COLUMN} = ?"
                 val selectionArgs = arrayOf(ProvidersUtil.idFromUri(uri) as String)
 
                 database.query(

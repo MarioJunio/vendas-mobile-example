@@ -1,9 +1,17 @@
 package br.com.sales.model
 
 import java.math.BigDecimal
+import java.text.SimpleDateFormat
 import java.util.*
 
-data class Venda(val id: Long, val descricao: String, val total: BigDecimal, val acrescimo: BigDecimal, val desconto: BigDecimal, val data: Date, val sync: Boolean) {
+data class Venda(val id: Long) {
+
+    lateinit var descricao: String
+    lateinit var total: BigDecimal
+    lateinit var acrescimo: BigDecimal
+    lateinit var desconto: BigDecimal
+    lateinit var data: Date
+    var sync: Boolean = false
 
     companion object Schema {
         val TABLE_NAME = "venda"
@@ -15,5 +23,9 @@ data class Venda(val id: Long, val descricao: String, val total: BigDecimal, val
         val DESCONTO_COLUMN = "desconto"
         val DATA_COLUMN = "data"
         val SYNC_COLUMN = "sync"
+
+        fun formatData(data: Date): String = SimpleDateFormat("dd/MM/yyyy").format(data)
+
+        fun parseData(data: String): Date = SimpleDateFormat("dd/MM/yyyy").parse(data)
     }
 }

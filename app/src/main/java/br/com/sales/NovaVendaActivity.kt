@@ -4,12 +4,15 @@ import android.content.ContentValues
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import br.com.sales.model.Venda
 import br.com.sales.provider.VendaProvider
+import java.util.*
 
 class NovaVendaActivity : AppCompatActivity() {
 
@@ -34,8 +37,16 @@ class NovaVendaActivity : AppCompatActivity() {
 
     fun salvarVenda(view: View) {
 
-        val values: ContentValues = ContentValues()
-        values.put()
+        val values = ContentValues()
+        values.put(Venda.DESCRICAO_COLUMN, inpDescription.text.toString())
+        values.put(Venda.TOTAL_COLUMN, inpTotal.text.toString().toDouble())
+        values.put(Venda.ACRESCIMO_COLUMN, inpAddition.text.toString().toDouble())
+        values.put(Venda.DESCONTO_COLUMN, inpDiscount.text.toString().toDouble())
+        values.put(Venda.DATA_COLUMN, Venda.formatData(Date()))
+        values.put(Venda.SYNC_COLUMN, 0)
 
+        contentResolver.insert(VendaProvider.CONTENT_URI, values)
+
+        Log.v("Nova venda", "Salva")
     }
 }
